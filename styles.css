@@ -1,7 +1,8 @@
 div {
 	height: 500px;
-	width: 400px;
+	width: 350px;
 	padding: 3px;
+	background-color: beige;
 }
 
 div div {
