@@ -53,19 +53,18 @@
 				}
 			 ?>
             <br>
-            <input type="radio" name="percentage" value="custom">Customize: <input type="text" name="custom" placeholder="0">%
-            <br>
-            Split by: <input type="text" name="person" placeholder="0">
-            <input type="submit" name="submit">
+            <p><input type="radio" name="percentage" value="custom">Customize: <input type="text" name="custom" placeholder="0">%</p>
+            <p>Split by: <input type="text" name="person" placeholder="0"></p>
+            <p><input type="submit" name="submit"></p>
 		</form>
 
 		<div <?php echo $hidden; ?>>
 			<?php
 				if (empty($error)) {
-					echo "<p id=\"tip\">Tip: $tip_value</p>";
-					echo "<p id=\"total\">Total: $total_value</p>";
-                    echo "<p id=\"people\"> #people: $people_value</p>";
-					echo "<p id=\"average\">Per person: $average_value</p>";
+					echo "<p id=\"tip\">Tip: $$tip_value</p>";
+					echo "<p id=\"total\">Total: $$total_value</p>";
+                    echo "<p id=\"people\">#people: $people_value</p>";
+					echo "<p id=\"average\">Per person: $$average_value</p>";
 				} else {
 					echo "<p id=\"error\">Error: $error</p>";
 				}

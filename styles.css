@@ -1,15 +1,17 @@
+div {
+	height: 500px;
+	width: 400px;
+	padding: 3px;
+}
+
 div div {
 	border: 1px solid;
-	min-height: 165px;
-	min-width: 300px;
+	height: 165px;
+	width: 300px;
 	position: relative;
 }
 
-p {
+div div p {
 	color: blue;
 	padding: 2px;
-}
-
-.content {
-	padding: 3px;
 }
