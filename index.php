@@ -16,20 +16,35 @@
 				if ($subtotal_value == 0) {
 					$error = "Please enter a valid money amount";
 				}
+
 				$percentage = isset($_POST['percentage']) ? $_POST['percentage'] : '';
 				if (empty($percentage)) {
 					$error = "Please choose the tip percentage";
 				}
-				$percentage_value = floatval($percentage);
+				if (strcmp($percentage, "costom") == 0) {
+				    $percentage = isset($_POST['custom']) ? $_POST['custom'] : '';
+				    if (empty($percentage)) {
+				        $error = "Please enter the customized percentage";
+                    }
+                }
+                $percentage_value = floatval($percentage);
+
+                $people = isset($_POST['person']) ? $_POST['person'] : '';
+                $people_value = floatval($people);
+                if ($people_value == 0) {
+                    $people_value = 1;
+                }
+
 				$tip_value = money_format('%.2n', $subtotal_value * $percentage_value / 100);
 				$total_value = money_format('%.2n', $subtotal_value + $tip_value);
+                $average_value = money_format('%.2n', $total_value / $people_value);
 			} else {
 				$hidden = "hidden";
 			}
 		 ?>
 
 		<form action="index.php" method="POST">
-			<h3>Bill subtotal: $ <input type="text" id="subtotal" name="subtotal" placeholder="0.00"></h3>
+			<h3>Bill subtotal: $ <input type="text" name="subtotal" placeholder="0.00"></h3>
 			<h3>Tip percentage:</h3>
 			<?php 
 				$percents = array("10%", "15%", "20%");
@@ -37,8 +52,11 @@
 					echo "<input type=\"radio\" name=\"percentage\" value=\"$p\"> $p";
 				}
 			 ?>
-			 <br>
-			 <input type="submit" name="submit">
+            <br>
+            <input type="radio" name="percentage" value="custom">Customize: <input type="text" name="custom" placeholder="0">%
+            <br>
+            Split by: <input type="text" name="person" placeholder="0">
+            <input type="submit" name="submit">
 		</form>
 
 		<div <?php echo $hidden; ?>>
@@ -46,6 +64,8 @@
 				if (empty($error)) {
 					echo "<p id=\"tip\">Tip: $tip_value</p>";
 					echo "<p id=\"total\">Total: $total_value</p>";
+                    echo "<p id=\"people\"> #people: $people_value</p>";
+					echo "<p id=\"average\">Per person: $average_value</p>";
 				} else {
 					echo "<p id=\"error\">Error: $error</p>";
 				}

@@ -1,12 +1,13 @@
 div div {
 	border: 1px solid;
-	height: 90px;
-	width: 300px;
+	min-height: 165px;
+	min-width: 300px;
+	position: relative;
 }
 
 p {
 	color: blue;
-	padding-left: 5px;
+	padding: 2px;
 }
 
 .content {
