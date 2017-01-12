@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Tip Calculator</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 <body>
 	<div class="content">
@@ -73,6 +73,6 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="scripts/script.js"></script>
 </body>
 </html>
