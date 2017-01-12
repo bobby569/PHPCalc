@@ -21,7 +21,7 @@
 				if (empty($percentage)) {
 					$error = "Please choose the tip percentage";
 				}
-				if (strcmp($percentage, "costom") == 0) {
+				if (strcmp($percentage, "custom") == 0) {
 				    $percentage = isset($_POST['custom']) ? $_POST['custom'] : '';
 				    if (empty($percentage)) {
 				        $error = "Please enter the customized percentage";
@@ -43,7 +43,7 @@
 			}
 		 ?>
 
-		<form action="index.php" method="POST">
+		<form id="myForm" action="index.php" method="POST">
 			<h3>Bill subtotal: $ <input type="text" name="subtotal" placeholder="0.00"></h3>
 			<h3>Tip percentage:</h3>
 			<?php 
@@ -53,7 +53,7 @@
 				}
 			 ?>
             <br>
-            <p><input type="radio" name="percentage" value="custom">Customize: <input type="text" name="custom" placeholder="0">%</p>
+            <p><input type="radio" name="percentage" value="custom">Customize: <input id="custom" type="text" name="custom" placeholder="0" disabled>%</p>
             <p>Split by: <input type="text" name="person" placeholder="0"></p>
             <p><input type="submit" name="submit"></p>
 		</form>
