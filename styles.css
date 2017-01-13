@@ -1,13 +1,22 @@
 div {
-	height: 500px;
+	min-height: 300px;
 	width: 350px;
-	padding: 3px;
+	padding: 10px;
 	background-color: beige;
+}
+
+#submit {
+	text-align: center;
+}
+
+.textbox {
+	width: 40px;
+	height: 15px;
 }
 
 div div {
 	border: 1px solid;
-	height: 165px;
+	min-height: 165px;
 	width: 300px;
 	position: relative;
 }
@@ -15,4 +24,8 @@ div div {
 div div p {
 	color: blue;
 	padding: 2px;
+}
+
+#error {
+	color: red;
 }

@@ -44,18 +44,27 @@
 		 ?>
 
 		<form id="myForm" action="index.php" method="POST">
-			<h3>Bill subtotal: $ <input type="text" name="subtotal" placeholder="0.00"></h3>
+			<h3>Bill subtotal: $ <input class="textbox" type="text" name="subtotal" placeholder="0.00" value="<?php echo $_POST['subtotal']; ?>"></h3>
 			<h3>Tip percentage:</h3>
 			<?php 
 				$percents = array("10%", "15%", "20%");
 				foreach ($percents as $p) {
-					echo "<input type=\"radio\" name=\"percentage\" value=\"$p\"> $p";
+					if (isset($_POST['percentage']) && $_POST['percentage']) {
+						if (strchr($_POST['percentage'], $p)) {
+							echo "<input type=\"radio\" name=\"percentage\" value=\"$p\" checked=\"checked\"> $p";
+						} else {
+							echo "<input type=\"radio\" name=\"percentage\" value=\"$p\"> $p";
+						}
+					} else {
+						echo "<input type=\"radio\" name=\"percentage\" value=\"$p\"> $p";
+					}
+					
 				}
 			 ?>
             <br>
-            <p><input type="radio" name="percentage" value="custom">Customize: <input id="custom" type="text" name="custom" placeholder="0" disabled>%</p>
-            <p>Split by: <input type="text" name="person" placeholder="0"></p>
-            <p><input type="submit" name="submit"></p>
+            <p><input type="radio" name="percentage" value="custom"> Customize: <input class="textbox" id="custom" type="text" name="custom" placeholder="0" value="<?php echo $_POST['custom']; ?>" disabled>%</p>
+            <p>Split by: <input class="textbox" type="text" name="person" value="<?php echo $_POST['person']; ?>" placeholder="0"></p>
+            <p id="submit"><input type="submit" name="submit"></p>
 		</form>
 
 		<div <?php echo $hidden; ?>>
